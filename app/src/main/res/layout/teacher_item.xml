@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/teacher_l"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:orientation="horizontal">
+
+    <com.fivestar.superclass.roundImageview.RoundedImageView
+        android:id="@+id/teacher_image"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
+        android:layout_marginTop="2dp" />
+
+    <TextView
+        android:id="@+id/teacher_name"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="top|bottom|left"
+        android:layout_marginLeft="10dp"
+
+        android:layout_weight="1"
+        android:gravity="top|bottom"
+        android:textSize="18sp" />
+
+</LinearLayout>

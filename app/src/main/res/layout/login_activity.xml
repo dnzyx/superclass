@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="133dp"
+        android:layout_marginTop="20dp"
+        app:srcCompat="@drawable/loginbg" />
+
+    <EditText
+        android:id="@+id/et_phoneNum"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="请输入手机号码"
+        android:inputType="phone" />
+
+    <EditText
+        android:id="@+id/et_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:hint="请输入密码"
+        android:inputType="textPassword" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        >
+
+        <CheckBox
+            android:id="@+id/cb_isCheck"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:textColor="@color/color_Theme"
+            android:textSize="15dp"
+            android:text="记住用户名和密码" />
+
+        <TextView
+            android:id="@+id/tv_forgetPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:paddingTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/color_Theme"
+            android:textSize="15dp"
+            android:text="忘记密码？" />
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        android:textColor="#fff"
+        android:textSize="20dp"
+        android:background="@drawable/shape_corner_theme_inner_border"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:text="登        录" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="40dp"
+        >
+        <TextView
+            android:id="@+id/login_tv_tour"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:textSize="20dp"
+            android:textColor="@color/color_Theme"
+            android:background="@drawable/shape_corner"
+            android:text="游客体验"
+            />
+
+ <!--TODO-->
+        <TextView
+            android:id="@+id/login_tv_reg"
+            android:layout_width="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_height="40dp"
+            android:layout_marginRight="20dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:textSize="20dp"
+            android:textColor="@color/color_Theme"
+            android:background="@drawable/shape_corner"
+            android:text="立即注册"
+            />
+    </RelativeLayout>
+
+</LinearLayout>
