@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.fivestar.superclass.core.listener.getCourseListener;
 import com.fivestar.superclass.core.model.course;
 import com.fivestar.superclass.core.model.teacher;
+import com.fivestar.superclass.core.util.inf;
 import com.fivestar.superclass.data.getCourseClient;
 import com.fivestar.superclass.db.DBHelper;
 import com.fivestar.superclass.db.courseDBOP;
@@ -159,11 +160,14 @@ public class courseListActivity extends AppCompatActivity implements getCourseLi
 
     @Override
     public void onGetCourseError(int code, String msg) {
-        if(code==505){
+        if(code== inf.DATA_EMPTY){
             teacher t=teacherDBOP.queryOne(id);
             t.setState(-1);
             teacherDBOP.update(t);
             this.showNormalDialog("无课", msg);
+        }
+        else if(code==inf.CODE_ERROR){
+            this.showNormalDialog("验证码错误", msg);
         }
         else {
             this.showNormalDialog("错误", msg);

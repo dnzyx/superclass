@@ -33,11 +33,11 @@ public class getTeacherClient {
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			listener.OnGetTeacherError(303, "网络异常");
+			listener.OnGetTeacherError(inf.CONNECT_EXCEPTION, "网络异常");
 			return;
 		}
 		if(data==null){
-			listener.OnGetTeacherError(404, "网络异常");
+			listener.OnGetTeacherError(inf.DATA_NULL, "获取数据失败");
 			return;
 		}
 		//data="<select name=Sel_JS style='width:220'><option></option><option value=0000916>Albert WOLFE</option><option value=0001968>Alexander SAWYER</option></select>";
@@ -58,7 +58,7 @@ public class getTeacherClient {
 			list.add(teach);
 		}
 		if(list.isEmpty()){
-			listener.OnGetTeacherError(505, "获取数据失败");
+			listener.OnGetTeacherError(inf.DATA_EMPTY, "数据解析结果为空");
 		}
 		else{
 			listener.onGetTeacher(list);

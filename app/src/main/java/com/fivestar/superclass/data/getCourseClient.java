@@ -34,11 +34,11 @@ public class getCourseClient {
 			data = catchData(year,teacherid,code);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			listener.onGetCourseError(101, "数据加载失败");
+			listener.onGetCourseError(inf.CONNECT_EXCEPTION, "数据加载失败");
 			return;
 		}
 		if(data==null){
-			listener.onGetCourseError(202, "数据为空");
+			listener.onGetCourseError(inf.DATA_NULL, "数据为空");
 			return;
 		}
 		Document doc = Jsoup.parse(data);
@@ -55,7 +55,7 @@ public class getCourseClient {
 		Elements node1s = doc.select("script");
 		if(node1s.isEmpty()==false)
 		{
-			listener.onGetCourseError(606, "验证码失败或生效");
+			listener.onGetCourseError(inf.CODE_ERROR, "验证码失败或失效");
 			return;
 		}
 		Elements nodes = doc.select("td[valign=top]");
@@ -71,7 +71,7 @@ public class getCourseClient {
 			i++;
 		}
 		if(list.isEmpty()){
-			listener.onGetCourseError(505, "该教师无课");
+			listener.onGetCourseError(inf.DATA_EMPTY, "该教师无课");
 			return;
 		}
 		listener.onGetCourse(list);

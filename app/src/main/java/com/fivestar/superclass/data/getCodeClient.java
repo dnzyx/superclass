@@ -10,6 +10,7 @@ import com.fivestar.superclass.core.util.inf;
 
 public class getCodeClient {
 	private getCodeListener listener;
+	private int stop=0;
     private byte[] buf;
 	public void setCodeListener(getCodeListener l){
 		this.listener = l;
@@ -40,9 +41,14 @@ public class getCodeClient {
 						con.disconnect();
 					} catch (Exception e) {
 						e.printStackTrace();
+						stop=inf.CONNECT_EXCEPTION;
 					}
 				}
 			}).start();
+			if(stop!=0){
+				listener.onGetCodeError(stop,"连接服务器错误");
+				return;
+			}
 			try {
 				Thread.sleep(inf.timeout);
 			} catch (InterruptedException e) {
@@ -50,7 +56,7 @@ public class getCodeClient {
 				e.printStackTrace();
 			}
 		if(buf == null){
-			listener.onGetCodeError(101, "获取验证码失败");
+			listener.onGetCodeError(inf.DATA_EXCEPTION, "获取验证码失败");
 			return;
 		}
 		listener.onGetCode(buf);
