@@ -10,11 +10,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
-import com.fivestar.superclass.core.listener.getCourseListener;
-import com.fivestar.superclass.core.model.course;
-import com.fivestar.superclass.core.model.teacher;
-import com.fivestar.superclass.core.util.inf;
-import com.fivestar.superclass.data.getCourseClient;
+import com.fivestar.superclass.api.listener.getCourseListener;
+import com.fivestar.superclass.api.model.course;
+import com.fivestar.superclass.api.model.teacher;
+import com.fivestar.superclass.api.util.inf;
+import com.fivestar.superclass.api.client.getCourseClient;
 import com.fivestar.superclass.db.DBHelper;
 import com.fivestar.superclass.db.courseDBOP;
 import com.fivestar.superclass.db.teacherDBOP;

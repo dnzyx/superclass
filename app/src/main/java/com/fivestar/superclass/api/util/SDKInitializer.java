@@ -1,4 +1,4 @@
-package com.fivestar.superclass.core.util;
+package com.fivestar.superclass.api.util;
 
 import android.app.ActivityManager;
 import android.content.Context;
@@ -10,7 +10,7 @@ import android.content.pm.Signature;
 import android.util.Log;
 
 
-import com.fivestar.superclass.core.model.key;
+import com.fivestar.superclass.api.model.key;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -30,7 +30,7 @@ public class SDKInitializer {
 
     private static Context context;
     private static boolean haveInit=false;
-    private static com.fivestar.superclass.core.model.key key;
+    private static com.fivestar.superclass.api.model.key key;
 
     public static void initialize(Context Context){
         context=Context;

@@ -1,4 +1,4 @@
-package com.fivestar.superclass.data;
+package com.fivestar.superclass.api.client;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
@@ -12,10 +12,10 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import com.fivestar.superclass.core.listener.getTeacherListener;
-import com.fivestar.superclass.core.model.teacher;
-import com.fivestar.superclass.core.util.SDKInitializer;
-import com.fivestar.superclass.core.util.inf;
+import com.fivestar.superclass.api.listener.getTeacherListener;
+import com.fivestar.superclass.api.model.teacher;
+import com.fivestar.superclass.api.util.SDKInitializer;
+import com.fivestar.superclass.api.util.inf;
 
 public class getTeacherClient {
 	private HttpURLConnection con;

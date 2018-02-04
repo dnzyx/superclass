@@ -1,4 +1,4 @@
-package com.fivestar.superclass.core.util;
+package com.fivestar.superclass.api.util;
 
 /**
  * Created by admin on 2018/1/13.

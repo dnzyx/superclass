@@ -8,8 +8,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.fivestar.superclass.core.model.course;
-import com.fivestar.superclass.core.model.teacher;
+import com.fivestar.superclass.api.model.course;
+import com.fivestar.superclass.api.model.teacher;
 import com.fivestar.superclass.db.DBHelper;
 import com.fivestar.superclass.db.courseDBOP;
 import com.fivestar.superclass.db.teacherDBOP;

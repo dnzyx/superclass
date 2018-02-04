@@ -1,12 +1,12 @@
-package com.fivestar.superclass.data;
+package com.fivestar.superclass.api.client;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import com.fivestar.superclass.core.listener.getCodeListener;
-import com.fivestar.superclass.core.util.inf;
+import com.fivestar.superclass.api.listener.getCodeListener;
+import com.fivestar.superclass.api.util.inf;
 
 public class getCodeClient {
 	private getCodeListener listener;

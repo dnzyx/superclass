@@ -11,7 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
 import android.widget.Toast;
 
-import com.fivestar.superclass.core.util.SDKInitializer;
+import com.fivestar.superclass.api.util.SDKInitializer;
 
 import java.util.ArrayList;
 import java.util.List;

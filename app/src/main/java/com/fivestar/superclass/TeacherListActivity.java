@@ -10,9 +10,9 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.fivestar.superclass.core.listener.getTeacherListener;
-import com.fivestar.superclass.core.model.teacher;
-import com.fivestar.superclass.data.getTeacherClient;
+import com.fivestar.superclass.api.listener.getTeacherListener;
+import com.fivestar.superclass.api.model.teacher;
+import com.fivestar.superclass.api.client.getTeacherClient;
 import com.fivestar.superclass.db.DBHelper;
 import com.fivestar.superclass.db.teacherDBOP;
 

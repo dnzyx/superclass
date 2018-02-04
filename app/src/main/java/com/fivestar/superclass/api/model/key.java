@@ -1,4 +1,4 @@
-package com.fivestar.superclass.core.model;
+package com.fivestar.superclass.api.model;
 
 import java.io.Serializable;
 

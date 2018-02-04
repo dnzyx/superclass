@@ -22,9 +22,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.fivestar.superclass.core.listener.getCodeListener;
-import com.fivestar.superclass.core.model.term;
-import com.fivestar.superclass.data.getCodeClient;
+import com.fivestar.superclass.api.listener.getCodeListener;
+import com.fivestar.superclass.api.model.term;
+import com.fivestar.superclass.api.client.getCodeClient;
 
 import java.util.ArrayList;
 

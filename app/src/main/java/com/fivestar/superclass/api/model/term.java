@@ -1,4 +1,4 @@
-package com.fivestar.superclass.core.model;
+package com.fivestar.superclass.api.model;
 
 /**
  * Created by admin on 2018/1/10.

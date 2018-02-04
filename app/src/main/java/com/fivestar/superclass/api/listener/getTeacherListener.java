@@ -1,8 +1,8 @@
-package com.fivestar.superclass.core.listener;
+package com.fivestar.superclass.api.listener;
 
 import java.util.ArrayList;
 
-import com.fivestar.superclass.core.model.teacher;
+import com.fivestar.superclass.api.model.teacher;
 
 public interface getTeacherListener {
 	public void onGetTeacher(ArrayList<teacher> list);

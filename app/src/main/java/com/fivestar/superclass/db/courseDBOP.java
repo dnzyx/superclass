@@ -2,7 +2,7 @@ package com.fivestar.superclass.db;
 
 import android.database.Cursor;
 
-import com.fivestar.superclass.core.model.course;
+import com.fivestar.superclass.api.model.course;
 
 import java.util.ArrayList;
 

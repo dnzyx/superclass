@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.fivestar.superclass.core.model.term;
+import com.fivestar.superclass.api.model.term;
 
 import java.util.List;
 

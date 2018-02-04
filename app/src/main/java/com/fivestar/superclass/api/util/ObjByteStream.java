@@ -1,4 +1,4 @@
-package com.fivestar.superclass.core.util;
+package com.fivestar.superclass.api.util;
 
 import java.io.ByteArrayInputStream;  
 import java.io.ByteArrayOutputStream;

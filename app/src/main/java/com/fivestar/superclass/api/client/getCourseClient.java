@@ -1,4 +1,4 @@
-package com.fivestar.superclass.data;
+package com.fivestar.superclass.api.client;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -13,10 +13,10 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import com.fivestar.superclass.core.listener.getCourseListener;
-import com.fivestar.superclass.core.model.course;
-import com.fivestar.superclass.core.util.SDKInitializer;
-import com.fivestar.superclass.core.util.inf;
+import com.fivestar.superclass.api.listener.getCourseListener;
+import com.fivestar.superclass.api.model.course;
+import com.fivestar.superclass.api.util.SDKInitializer;
+import com.fivestar.superclass.api.util.inf;
 
 public class getCourseClient {
 	private String result;

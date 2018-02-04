@@ -12,7 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.fivestar.superclass.core.model.teacher;
+import com.fivestar.superclass.api.model.teacher;
 import com.fivestar.superclass.db.DBHelper;
 import com.fivestar.superclass.db.teacherDBOP;
 import com.fivestar.superclass.roundImageview.RoundedImageView;

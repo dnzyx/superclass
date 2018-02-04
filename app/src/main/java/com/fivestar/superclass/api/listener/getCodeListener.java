@@ -1,4 +1,4 @@
-package com.fivestar.superclass.core.listener;
+package com.fivestar.superclass.api.listener;
 
 public interface getCodeListener {
 	//获取验证码以后的回调函数
