@@ -170,7 +170,7 @@ public class courseListActivity extends AppCompatActivity implements getCourseLi
             this.showNormalDialog("验证码错误", msg);
         }
         else {
-            this.showNormalDialog("错误", msg);
+            this.showNormalDialog("错误"+code, msg);
         }
     }
 
