@@ -43,7 +43,7 @@ public class getCourseClient {
 			return;
 		}
 		Document doc = Jsoup.parse(data);
-		Elements p=doc.select("div");
+		Elements p=doc.select("p");
 		if(p.isEmpty()==false&&p.attr("value").endsWith("0")==false){
 			listener.onGetCourseError(Integer.parseInt(p.attr("value")),p.text());
 			return;

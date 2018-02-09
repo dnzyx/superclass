@@ -47,15 +47,15 @@ public class courseListActivity extends AppCompatActivity implements getCourseLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.courselist_layout);
 
+        DBHelper helper = new DBHelper(this,"superclass.db", null,1);
+        courseDBOP=new courseDBOP(helper);
+        teacherDBOP=new teacherDBOP(helper);
+
         Intent intent=this.getIntent();
         xq=intent.getStringExtra("year");
         id=intent.getStringExtra("id");
         yzm=intent.getStringExtra("code");
-        this.setTitle("工号："+id);
-
-        DBHelper helper = new DBHelper(this,"superclass.db", null,1);
-        courseDBOP=new courseDBOP(helper);
-        teacherDBOP=new teacherDBOP(helper);
+        this.setTitle("姓名："+teacherDBOP.queryOne(id).getName());
 
         if(teacherDBOP.queryOne(id).getState()==0){
             getCourseClient client = new getCourseClient();

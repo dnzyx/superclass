@@ -43,6 +43,11 @@ public class getTeacherClient {
 		}
 		//data="<select name=Sel_JS style='width:220'><option></option><option value=0000916>Albert WOLFE</option><option value=0001968>Alexander SAWYER</option></select>";
 		Document doc = Jsoup.parse(data);
+		Elements p=doc.select("p");
+		if(p.isEmpty()==false&&p.attr("value").endsWith("0")==false){
+			listener.OnGetTeacherError(Integer.parseInt(p.attr("value")),p.text());
+			return;
+		}
 		Elements e=doc.select("div");
 		if(e.isEmpty()==false){
 			listener.OnGetTeacherError(inf.KEY_ERROR,"您可能是盗版软件的受害者!");
