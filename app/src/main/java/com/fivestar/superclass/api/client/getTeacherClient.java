@@ -12,6 +12,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import com.fivestar.superclass.api.exception.KeyErrorException;
 import com.fivestar.superclass.api.listener.getTeacherListener;
 import com.fivestar.superclass.api.model.teacher;
 import com.fivestar.superclass.api.util.SDKInitializer;
@@ -37,14 +38,20 @@ public class getTeacherClient {
 			return;
 		}
 		if(data==null){
-			listener.OnGetTeacherError(inf.DATA_NULL, "获取数据失败");
+			listener.OnGetTeacherError(inf.DATA_NULL, "加载数据失败");
 			return;
 		}
 		//data="<select name=Sel_JS style='width:220'><option></option><option value=0000916>Albert WOLFE</option><option value=0001968>Alexander SAWYER</option></select>";
 		Document doc = Jsoup.parse(data);
 		Elements e=doc.select("div");
 		if(e.isEmpty()==false){
-			listener.OnGetTeacherError(-1,e.text());
+			listener.OnGetTeacherError(inf.KEY_ERROR,"您可能是盗版软件的受害者!");
+			try {
+				throw new KeyErrorException();
+			} catch (KeyErrorException e1) {
+				e1.printStackTrace();
+				System.exit(0);
+			}
 			return;
 		}
 		Elements nodes = doc.select("option");

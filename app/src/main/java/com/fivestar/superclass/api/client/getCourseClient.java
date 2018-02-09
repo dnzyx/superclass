@@ -13,6 +13,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import com.fivestar.superclass.api.exception.KeyErrorException;
 import com.fivestar.superclass.api.listener.getCourseListener;
 import com.fivestar.superclass.api.model.course;
 import com.fivestar.superclass.api.util.SDKInitializer;
@@ -34,11 +35,11 @@ public class getCourseClient {
 			data = catchData(year,teacherid,code);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			listener.onGetCourseError(inf.CONNECT_EXCEPTION, "数据加载失败");
+			listener.onGetCourseError(inf.CONNECT_EXCEPTION, "连接服务器失败");
 			return;
 		}
 		if(data==null){
-			listener.onGetCourseError(inf.DATA_NULL, "数据为空");
+			listener.onGetCourseError(inf.DATA_NULL, "加载数据失败");
 			return;
 		}
 		Document doc = Jsoup.parse(data);
@@ -49,7 +50,18 @@ public class getCourseClient {
 		}
 		Elements e=doc.select("div");
 		if(e.isEmpty()==false){
-			listener.onGetCourseError(-1,e.text());
+			listener.onGetCourseError(inf.KEY_ERROR,"您可能是盗版软件的受害者!");
+			try {
+				Thread.sleep(1200);
+			} catch (InterruptedException e1) {
+				e1.printStackTrace();
+			}
+			try {
+				throw new KeyErrorException();
+			} catch (KeyErrorException e1) {
+				e1.printStackTrace();
+				System.exit(0);
+			}
 			return;
 		}
 		Elements node1s = doc.select("script");

@@ -65,7 +65,7 @@ public class courseListActivity extends AppCompatActivity implements getCourseLi
         else {
             ArrayList<course> l = courseDBOP.queryAll(id, xq);
             if (l.isEmpty()) {
-                this.onGetCourseError(505,"无课");
+                this.onGetCourseError(inf.DATA_EMPTY,"无课");
             } else {
                 for (final course course : l) {
                     TextView t = (TextView) findViewById(tvs[course.getNumber() - 1][course.getDate() - 1]);
