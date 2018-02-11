@@ -15,7 +15,7 @@ import android.widget.Toast;
  * Created by Lenovo on 2017/10/26.
  */
 
-public class Main_window extends Fragment implements View.OnClickListener {
+public class index_window extends Fragment implements View.OnClickListener {
     private ImageView iv_moreApplication,ad,ad1;
     View view;
 

@@ -1,5 +1,6 @@
 package com.fivestar.superclass;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -29,6 +30,7 @@ public class courseListActivity extends AppCompatActivity implements getCourseLi
     private String xq;
     private String yzm;
     int i,j;
+    private ProgressDialog progressBar;
 
     private int[][] tvs={
             {R.id.Tv22,R.id.Tv23,R.id.Tv24,R.id.Tv25,R.id.Tv26,R.id.Tv27,R.id.Tv28,},
@@ -47,6 +49,9 @@ public class courseListActivity extends AppCompatActivity implements getCourseLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.courselist_layout);
 
+        progressBar = ProgressDialog.show(this,"处理中。。。",
+                "正在找到结果，请稍等...…");
+
         DBHelper helper = new DBHelper(this,"superclass.db", null,1);
         courseDBOP=new courseDBOP(helper);
         teacherDBOP=new teacherDBOP(helper);
@@ -55,7 +60,7 @@ public class courseListActivity extends AppCompatActivity implements getCourseLi
         xq=intent.getStringExtra("year");
         id=intent.getStringExtra("id");
         yzm=intent.getStringExtra("code");
-        this.setTitle("姓名："+teacherDBOP.queryOne(id).getName());
+        this.setTitle(teacherDBOP.queryOne(id).getName()+" "+id);
 
         if(teacherDBOP.queryOne(id).getState()==0){
             getCourseClient client = new getCourseClient();
@@ -65,7 +70,7 @@ public class courseListActivity extends AppCompatActivity implements getCourseLi
         else {
             ArrayList<course> l = courseDBOP.queryAll(id, xq);
             if (l.isEmpty()) {
-                this.onGetCourseError(inf.DATA_EMPTY,"无课");
+                this.onGetCourseError(inf.DATA_EMPTY,"该教师无课");
             } else {
                 for (final course course : l) {
                     TextView t = (TextView) findViewById(tvs[course.getNumber() - 1][course.getDate() - 1]);
@@ -89,7 +94,12 @@ public class courseListActivity extends AppCompatActivity implements getCourseLi
                 }
             }
         }
+
         addListener();
+
+        if (progressBar!=null&&progressBar.isShowing()) {
+            progressBar.dismiss();
+        }
     }
 
     private void addListener(){
@@ -164,23 +174,23 @@ public class courseListActivity extends AppCompatActivity implements getCourseLi
             teacher t=teacherDBOP.queryOne(id);
             t.setState(-1);
             teacherDBOP.update(t);
-            this.showNormalDialog("无课", msg);
+            this.showNormalDialog("无课 =_+", msg,code);
         }
         else if(code==inf.CODE_ERROR){
-            this.showNormalDialog("验证码错误", msg);
+            this.showNormalDialog("验证码错误 +_+||", msg,code);
         }
         else {
-            this.showNormalDialog("错误"+code, msg);
+            this.showNormalDialog("错误 =_=||"+code, msg,code);
         }
     }
 
     @Override
     public void finish() {
-        Intent intent = new Intent(this, search_window.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        Intent intent = new Intent(this, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
 
-    private void showNormalDialog(String title,String msg){
+    private void showNormalDialog(String title, String msg, final int code){
         /* @setIcon 设置对话框图标
          * @setTitle 设置对话框标题
          * @setMessage 设置对话框消息提示
@@ -188,11 +198,20 @@ public class courseListActivity extends AppCompatActivity implements getCourseLi
          */
         final AlertDialog.Builder normalDialog =
                 new AlertDialog.Builder(courseListActivity.this);
-        if(title.endsWith("无课")) {
+        if(code==inf.DATA_EMPTY) {
             normalDialog.setIcon(android.R.drawable.star_big_on);
         }
         else {
             normalDialog.setIcon(android.R.drawable.ic_delete);
+        }
+        if(code==inf.CODE_ERROR) {
+            normalDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                @Override
+                public void onCancel(DialogInterface dialog) {
+                    Intent intent = new Intent(courseListActivity.this, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    courseListActivity.this.startActivity(intent);
+                }
+            });
         }
         normalDialog.setTitle(title);
         normalDialog.setMessage(msg);
@@ -200,7 +219,6 @@ public class courseListActivity extends AppCompatActivity implements getCourseLi
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        //...To-do
                         Intent intent=new Intent(courseListActivity.this,MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);;
                         courseListActivity.this.startActivity(intent);
                     }
@@ -209,7 +227,10 @@ public class courseListActivity extends AppCompatActivity implements getCourseLi
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        //...To-do
+                        if(code==inf.CODE_ERROR){
+                            Intent intent=new Intent(courseListActivity.this,MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);;
+                            courseListActivity.this.startActivity(intent);
+                        }
                     }
                 });
         // 显示

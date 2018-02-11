@@ -26,7 +26,7 @@ public class getTeacherClient {
 	public void setListener(getTeacherListener l){
 		this.listener = l;
 	}
-	public void star(){
+	public void start(){
 		ArrayList<teacher> list = new ArrayList<teacher>();
 		String data = null;
 		try {

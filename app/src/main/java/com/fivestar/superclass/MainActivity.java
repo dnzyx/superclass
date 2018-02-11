@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
-        replaceFragment(new Main_window());
+        replaceFragment(new index_window());
         this.setTitle("超机课程表");
 
         iv_main = (ImageView) findViewById(R.id.iv_main);
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         switch (v.getId()){
             case R.id.iv_main:
-                replaceFragment(new Main_window());
+                replaceFragment(new index_window());
                 MysetImageResource(R.id.iv_main);
                 break;
             case R.id.iv_stopping:

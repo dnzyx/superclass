@@ -24,6 +24,7 @@ public class addCourseActivity extends AppCompatActivity {
     private int number;
     private courseDBOP courseDBOP;
     private teacherDBOP teacherDBOP;
+    private String chinese[]={"一","二","三","四","五","六","日"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +38,7 @@ public class addCourseActivity extends AppCompatActivity {
         id=intent.getStringExtra("id");
         date=intent.getIntExtra("date",0);
         number=intent.getIntExtra("number",0);
-        this.setTitle("添加 星期"+date+" 第"+number+"节课");
+        this.setTitle("添加星期"+chinese[date-1]+"第"+number+"节课");
         DBHelper helper = new DBHelper(addCourseActivity.this,"superclass.db", null,1);
         courseDBOP=new courseDBOP(helper);
         teacherDBOP=new teacherDBOP(helper);
@@ -58,8 +59,10 @@ public class addCourseActivity extends AppCompatActivity {
                 c.setNumber(number);
                 courseDBOP.insert(c);
                 teacher t= teacherDBOP.queryOne(id);
-                t.setState(1);
-                teacherDBOP.update(t);
+                if(t.getState()!=1) {
+                    t.setState(1);
+                    teacherDBOP.update(t);
+                }
                 Intent intent = new Intent(addCourseActivity.this, courseListActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("id",id);
                 intent.putExtra("year",xq);

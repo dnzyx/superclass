@@ -1,6 +1,7 @@
 package com.fivestar.superclass;
 
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -26,10 +27,15 @@ public class TeacherListActivity extends AppCompatActivity implements getTeacher
     private EditText input;
     private teacherDBOP teacherDBOP;
     private String year;
+    private ProgressDialog progressBar;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teacher_list);
+
+        progressBar = ProgressDialog.show(this,"处理中。。。",
+                "正在找到结果，请稍等...…");
+
 
         input=(EditText)findViewById(R.id.search_teacher);
         lv=(ListView)findViewById(R.id.teachers) ;
@@ -40,7 +46,7 @@ public class TeacherListActivity extends AppCompatActivity implements getTeacher
         if(l.size()==0) {
             getTeacherClient client = new getTeacherClient();
             client.setListener(TeacherListActivity.this);
-            client.star();
+            client.start();
         }
         input.addTextChangedListener(new TextWatcher() {
             @Override
@@ -64,6 +70,11 @@ public class TeacherListActivity extends AppCompatActivity implements getTeacher
 
             }
         });
+
+        if (progressBar!=null&&progressBar.isShowing()) {
+            progressBar.dismiss();
+        }
+
     }
 
 
